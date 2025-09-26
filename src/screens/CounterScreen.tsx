@@ -26,7 +26,7 @@ export default function CounterScreen({ initial = 0, resetTo = 0 }: Props) {
       className="screen"
       style={{
         maxWidth: "520px",
-        margin: "40px auto",
+        margin: "24px auto 0",
         padding: "24px",
         borderRadius: "12px",
         border: "1px solid #e5e7eb",

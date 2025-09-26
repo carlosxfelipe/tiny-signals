@@ -1,0 +1,147 @@
+:root {
+  --bg: #ffffff;
+  --btn-active: #e2e8f0;
+  --btn-bg: #f8fafc;
+  --btn-border: #e2e8f0;
+  --btn-hover: #eef2f7;
+  --card-bg: #ffffff;
+  --card-border: #e5e7eb;
+  --danger: #ef4444;
+  --danger-hover: #dc2626;
+  --fg: #0f172a;
+  --muted: #64748b;
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --ring: 0 0 0 4px rgba(99, 102, 241, 0.15);
+  --shadow: 0 6px 24px rgba(2, 6, 23, 0.06);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b1220;
+    --btn-active: #0b1320;
+    --btn-bg: #111827;
+    --btn-border: #1f2937;
+    --btn-hover: #0b1626;
+    --card-bg: #0f172a;
+    --card-border: #1f2937;
+    --danger: #f87171;
+    --danger-hover: #ef4444;
+    --fg: #e5e7eb;
+    --muted: #94a3b8;
+    --primary: #6366f1;
+    --primary-hover: #5458e8;
+    --ring: 0 0 0 4px rgba(99, 102, 241, 0.25);
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  }
+}
+
+html[data-theme="dark"] {
+  --bg: #0b1220;
+  --btn-active: #0b1320;
+  --btn-bg: #111827;
+  --btn-border: #1f2937;
+  --btn-hover: #0b1626;
+  --card-bg: #0f172a;
+  --card-border: #1f2937;
+  --danger: #f87171;
+  --danger-hover: #ef4444;
+  --fg: #e5e7eb;
+  --muted: #94a3b8;
+  --primary: #6366f1;
+  --primary-hover: #5458e8;
+  --ring: 0 0 0 4px rgba(99, 102, 241, 0.25);
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+}
+
+html[data-theme="light"] {
+  --bg: #ffffff;
+  --btn-active: #e2e8f0;
+  --btn-bg: #f8fafc;
+  --btn-border: #e2e8f0;
+  --btn-hover: #eef2f7;
+  --card-bg: #ffffff;
+  --card-border: #e5e7eb;
+  --danger: #ef4444;
+  --danger-hover: #dc2626;
+  --fg: #0f172a;
+  --muted: #64748b;
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --ring: 0 0 0 4px rgba(99, 102, 241, 0.15);
+  --shadow: 0 6px 24px rgba(2, 6, 23, 0.06);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font: 16px/1.6 Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI,
+    Roboto, Arial, sans-serif;
+}
+
+html,
+body,
+main {
+  background: var(--bg);
+}
+
+img,
+video,
+canvas,
+svg {
+  height: auto;
+  max-width: 100%;
+}
+
+img {
+  contain-intrinsic-size: 160px 160px;
+  content-visibility: auto;
+}
+
+.link {
+  color: var(--primary);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.link:hover {
+  color: var(--primary-hover);
+  text-decoration-color: var(--primary-hover);
+}
+
+.link:focus {
+  border-radius: 2px;
+  box-shadow: var(--ring);
+  outline: none;
+}
+
+main {
+  backface-visibility: hidden;
+  contain: paint;
+  transform: translateZ(0);
+  will-change: opacity, transform;
+}
+
+[data-screen-root] {
+  contain: paint;
+  content-visibility: auto;
+}
+
+@media (max-width: 640px) {
+  .no-heavy-filter {
+    filter: none !important;
+  }
+}
