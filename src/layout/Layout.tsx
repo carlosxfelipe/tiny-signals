@@ -30,9 +30,10 @@ export default function Layout({
 const styles = StyleSheet.create({
   navbar: {
     padding: "16px",
-    borderBottom: "1px solid #e5e7eb",
+    borderBottom: "1px solid var(--card-border)",
     marginBottom: "24px",
-    background: "#f9fafb",
+    background: "var(--btn-bg)",
+    color: "var(--fg)",
   },
   page: {
     width: "min(100%, 1024px)",
