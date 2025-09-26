@@ -1,6 +1,7 @@
 import { h } from "@tiny/tiny-signals.ts";
 import { createSignal, createMemo, batch } from "@tiny/tiny-signals.ts";
 import { StyleSheet } from "@styles/stylesheet.ts";
+import Button from "@components/Button.tsx";
 
 type Props = {
   initial?: number;
@@ -36,37 +37,23 @@ export default function CounterScreen({ initial = 0, resetTo = 0 }: Props) {
       </div>
 
       <div style={styles.actions}>
-        <button
-          type="button"
-          onClick={dec}
-          disabled={() => count() <= 0}
-          style={StyleSheet.merge(styles.btn, {
-            cursor: () => (count() <= 0 ? "not-allowed" : "pointer"),
-            opacity: () => (count() <= 0 ? 0.5 : 1),
-          })}
-        >
+        <Button onClick={dec} disabled={() => count() <= 0}>
           −1
-        </button>
-
-        <button type="button" onClick={inc} style={styles.btnAlt}>
+        </Button>
+        <Button variant="solid" tone="primary" onClick={inc}>
           +1
-        </button>
-
-        <button type="button" onClick={plusTwo} style={styles.btnAlt}>
+        </Button>
+        <Button variant="solid" tone="primary" onClick={plusTwo}>
           +2 (batch)
-        </button>
-
-        <button
-          type="button"
+        </Button>
+        <Button
+          variant="solid"
+          tone="danger"
           onClick={reset}
           disabled={isAtReset}
-          style={StyleSheet.merge(styles.btn, {
-            cursor: () => (isAtReset() ? "not-allowed" : "pointer"),
-            opacity: () => (isAtReset() ? 0.5 : 1),
-          })}
         >
           reset
-        </button>
+        </Button>
       </div>
     </div>
   );
@@ -102,18 +89,5 @@ const styles = StyleSheet.create({
     display: "flex",
     gap: "8px",
     flexWrap: "wrap",
-  },
-  btn: {
-    padding: "10px 14px",
-    borderRadius: "10px",
-    border: "1px solid var(--btn-border)",
-    background: "var(--card-bg)",
-  },
-  btnAlt: {
-    padding: "10px 14px",
-    borderRadius: "10px",
-    border: "1px solid var(--btn-border)",
-    background: "var(--btn-bg)",
-    cursor: "pointer",
   },
 });

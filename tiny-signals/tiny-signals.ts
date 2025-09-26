@@ -85,7 +85,7 @@ export function createEffect(fn: () => void): void {
 }
 
 export function onCleanup(cb: Cleanup) {
-  if (!CURRENT) throw new Error("onCleanup fora de um computation");
+  if (!CURRENT) throw new Error("onCleanup called outside of a computation");
   CURRENT.cleanups.push(cb);
 }
 
