@@ -61,14 +61,14 @@ export default function CounterScreen({ initial = 0, resetTo = 0 }: Props) {
 
 const styles = StyleSheet.create({
   card: {
-    maxWidth: "520px",
+    "max-width": "520px",
     margin: "24px auto 0",
     padding: "24px",
-    borderRadius: "12px",
+    "border-radius": "20px",
     border: "1px solid var(--card-border)",
-    boxShadow: "var(--shadow)",
+    "box-shadow": "var(--shadow)",
     background: "var(--card-bg)",
-    lineHeight: 1.5,
+    "line-height": 1.5,
   },
   title: {
     margin: "0 0 12px",
@@ -76,11 +76,11 @@ const styles = StyleSheet.create({
   },
   infoBox: {
     display: "grid",
-    rowGap: "4px",
-    marginBottom: "16px",
+    "row-gap": "4px",
+    "margin-bottom": "16px",
   },
   bold: {
-    fontWeight: 600,
+    "font-weight": 600,
   },
   muted: {
     color: "var(--muted)",
@@ -88,6 +88,6 @@ const styles = StyleSheet.create({
   actions: {
     display: "flex",
     gap: "8px",
-    flexWrap: "wrap",
+    "flex-wrap": "wrap",
   },
 });

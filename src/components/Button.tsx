@@ -68,9 +68,9 @@ function asBool(v: boolean | (() => boolean)) {
 }
 
 const sizeStyles: Record<ButtonSize, JSX.StyleObject> = {
-  sm: { padding: "6px 12px", fontSize: "12.5px", borderRadius: "8px" },
-  md: { padding: "8px 14px", fontSize: "14px", borderRadius: "10px" },
-  lg: { padding: "10px 18px", fontSize: "15px", borderRadius: "12px" },
+  sm: { padding: "6px 16px", "font-size": "12.5px", "border-radius": "9999px" },
+  md: { padding: "8px 18px", "font-size": "14px", "border-radius": "9999px" },
+  lg: { padding: "10px 22px", "font-size": "15px", "border-radius": "9999px" },
 };
 
 const toneStyles: Record<ButtonTone, JSX.StyleObject> = StyleSheet.create({
@@ -114,16 +114,16 @@ const variantStyles: Record<ButtonVariant, JSX.StyleObject> = {
 const styles = StyleSheet.create({
   base: {
     display: "inline-flex",
-    alignItems: "center",
-    justifyContent: "center",
+    "align-items": "center",
+    "justify-content": "center",
     gap: "8px",
-    userSelect: "none",
-    WebkitTapHighlightColor: "transparent",
+    "user-select": "none",
+    "-webkit-tap-highlight-color": "transparent",
     outline: "none",
-    boxShadow: "var(--shadow)",
+    "box-shadow": "var(--shadow)",
     transition:
       "opacity 120ms ease, background 120ms ease, box-shadow 120ms ease",
   },
   block: { display: "flex", width: "100%" },
-  label: { fontWeight: 600 },
+  label: { "font-weight": 600 },
 });
