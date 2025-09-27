@@ -26,8 +26,9 @@
     "@components/": "./src/components/",
     "@layout/": "./src/layout/",
     "@icons/": "./src/icons/",
-    "@screens/": "./src/screens/",
+    "@pages/": "./src/pages/",
     "@styles/": "./src/styles/",
-    "@utils/": "./src/utils/"
+    "@utils/": "./src/utils/",
+    "@store/": "./src/store/"
   }
 }

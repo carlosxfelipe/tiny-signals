@@ -1,5 +1,5 @@
-import HomeScreen from "@screens/HomeScreen.tsx";
-import CounterScreen from "@screens/CounterScreen.tsx";
+import HomeScreen from "@pages/HomeScreen.tsx";
+import CounterScreen from "@pages/CounterScreen.tsx";
 
 export const ROUTE_DEFS = [
   {
