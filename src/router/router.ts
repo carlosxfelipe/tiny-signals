@@ -1,6 +1,7 @@
 import { createSignal } from "@tiny/tiny-signals.ts";
 import { ROUTE_DEFS, ROUTES } from "./routes.ts";
 import type { Route } from "./routes.ts";
+import { save, restore } from "./scroll.ts";
 
 export { ROUTES };
 export type { Route };
@@ -28,7 +29,15 @@ export function useRoute() {
 }
 
 export function attachRouter() {
-  const onHash = () => setRoute(getRoute());
+  const onHash = () => {
+    const prev = route();
+    save(prev);
+    const next = getRoute();
+    setRoute(next);
+    queueMicrotask(() =>
+      requestAnimationFrame(() => requestAnimationFrame(() => restore(next)))
+    );
+  };
   globalThis.addEventListener("hashchange", onHash);
   return () => globalThis.removeEventListener("hashchange", onHash);
 }
@@ -45,6 +54,7 @@ export function navigate(
     : "";
   const next = qs ? `${base}?${qs}` : base;
   if (globalThis.location?.hash !== "#" + next) {
+    save(route());
     globalThis.location.hash = next;
   }
 }
