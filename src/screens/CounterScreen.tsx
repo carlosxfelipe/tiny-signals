@@ -24,7 +24,7 @@ export default function CounterScreen({ initial = 0, resetTo = 0 }: Props) {
   const isAtReset = createMemo(() => count() === resetTo);
 
   return (
-    <div className="screen" style={styles.card}>
+    <div className="screen">
       <h1 style={styles.title}>Counter</h1>
 
       <div style={styles.infoBox}>
@@ -60,16 +60,6 @@ export default function CounterScreen({ initial = 0, resetTo = 0 }: Props) {
 }
 
 const styles = StyleSheet.create({
-  card: {
-    "max-width": "520px",
-    margin: "24px auto 0",
-    padding: "24px",
-    "border-radius": "20px",
-    border: "1px solid var(--card-border)",
-    "box-shadow": "var(--shadow)",
-    background: "var(--card-bg)",
-    "line-height": 1.5,
-  },
   title: {
     margin: "0 0 12px",
     color: "var(--primary)",

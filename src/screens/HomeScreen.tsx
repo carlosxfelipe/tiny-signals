@@ -6,7 +6,7 @@ import type { Route } from "@src/router/router.ts";
 
 export default function HomeScreen() {
   return (
-    <section style={styles.card}>
+    <section>
       <h1 style={styles.title}>Olá, mundo! 👋</h1>
       <p style={styles.p}>Esta é a tela inicial.</p>
       <Button
@@ -21,15 +21,6 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  card: {
-    "max-width": "620px",
-    margin: "24px auto 0",
-    padding: "24px",
-    "border-radius": "20px",
-    border: "1px solid var(--card-border)",
-    "box-shadow": "var(--shadow)",
-    background: "var(--card-bg)",
-  },
   title: {
     margin: "0 0 12px",
     color: "var(--primary)",
