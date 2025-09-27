@@ -1,6 +1,12 @@
+import HomeScreen from "@screens/HomeScreen.tsx";
 import CounterScreen from "@screens/CounterScreen.tsx";
 
 export const ROUTE_DEFS = [
+  {
+    path: "#/" as const,
+    component: HomeScreen,
+    layout: { fluid: false, navbar: true },
+  },
   {
     path: "#/counter" as const,
     component: CounterScreen,
