@@ -24,7 +24,7 @@ export default function CounterPage({ initial = 0, resetTo = 0 }: Props) {
 
   return (
     <div className="screen">
-      <h1 style={styles.title}>Counter</h1>
+      <h1 style={styles.title}>Contador</h1>
       <div style={styles.infoBox}>
         <div>
           Valor: <span style={styles.bold}>{count}</span>
