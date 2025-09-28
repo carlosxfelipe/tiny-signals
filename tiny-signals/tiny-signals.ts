@@ -200,6 +200,60 @@ type Component<P = Record<string, unknown>> = (
   props: P & { children?: Child[] }
 ) => Node;
 
+const SVG_NS = "http://www.w3.org/2000/svg";
+const SVG_TAGS = new Set([
+  "svg",
+  "path",
+  "g",
+  "defs",
+  "clipPath",
+  "mask",
+  "pattern",
+  "linearGradient",
+  "radialGradient",
+  "stop",
+  "circle",
+  "ellipse",
+  "line",
+  "polyline",
+  "polygon",
+  "rect",
+  "use",
+  "symbol",
+  "marker",
+  "text",
+  "tspan",
+  "textPath",
+  "foreignObject",
+  "filter",
+  "feGaussianBlur",
+  "feOffset",
+  "feBlend",
+  "feColorMatrix",
+  "feComponentTransfer",
+  "feComposite",
+  "feConvolveMatrix",
+  "feDiffuseLighting",
+  "feDisplacementMap",
+  "feDistantLight",
+  "feFlood",
+  "feFuncA",
+  "feFuncB",
+  "feFuncG",
+  "feFuncR",
+  "feImage",
+  "feMerge",
+  "feMergeNode",
+  "feMorphology",
+  "fePointLight",
+  "feSpecularLighting",
+  "feSpotLight",
+  "feTile",
+  "feTurbulence",
+  "title",
+  "desc",
+]);
+
 export function h(
   tag: string | Component<Record<string, unknown>>,
   props: Record<string, unknown> | null | undefined,
@@ -212,10 +266,10 @@ export function h(
     });
   }
 
-  const el =
-    tag === "svg"
-      ? document.createElementNS("http://www.w3.org/2000/svg", tag)
-      : document.createElement(tag);
+  const isSvg = SVG_TAGS.has(tag);
+  const el = isSvg
+    ? document.createElementNS(SVG_NS, tag)
+    : document.createElement(tag);
 
   if (props)
     for (const k in props)

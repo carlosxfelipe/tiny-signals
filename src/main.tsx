@@ -1,4 +1,5 @@
 import "@styles/global.css";
+import "@styles/navbar.css";
 
 import { h, mount, createRoot } from "@tiny/tiny-signals.ts";
 import Layout from "@layout/Layout.tsx";
