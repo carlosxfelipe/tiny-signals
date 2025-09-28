@@ -14,6 +14,8 @@ export default function Navbar({ currentPath }: NavbarProps = {}) {
   const links = [
     { href: "#/", label: "Início", icon: "home" as const },
     { href: "#/counter", label: "Contador", icon: "plus" as const },
+    { href: "#/cep", label: "ViaCEP", icon: "map-marker-outline" as const },
+    { href: "#/about", label: "Sobre", icon: "help-circle-outline" as const },
   ];
 
   const isActive = (href: string) =>

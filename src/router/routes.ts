@@ -1,5 +1,7 @@
 import HomePage from "@pages/HomePage.tsx";
 import CounterPage from "@pages/CounterPage.tsx";
+import CepPage from "@pages/CepPage.tsx";
+import AboutPage from "@pages/AboutPage.tsx";
 
 export const ROUTE_DEFS = [
   {
@@ -10,6 +12,16 @@ export const ROUTE_DEFS = [
   {
     path: "#/counter" as const,
     component: CounterPage,
+    layout: { fluid: false, navbar: true },
+  },
+  {
+    path: "#/cep" as const,
+    component: CepPage,
+    layout: { fluid: false, navbar: true },
+  },
+  {
+    path: "#/about" as const,
+    component: AboutPage,
     layout: { fluid: false, navbar: true },
   },
 ] as const;
