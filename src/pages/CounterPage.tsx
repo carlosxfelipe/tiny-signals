@@ -5,7 +5,7 @@ import { counterStore } from "@store/counter.ts";
 
 type Props = { initial?: number; resetTo?: number };
 
-export default function CounterScreen({ initial = 0, resetTo = 0 }: Props) {
+export default function CounterPage({ initial = 0, resetTo = 0 }: Props) {
   if (initial !== 0 && counterStore.getState().count === 0) {
     counterStore.setState({ count: initial });
   }

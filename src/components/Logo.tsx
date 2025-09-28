@@ -66,7 +66,7 @@ export default function Logo({
             "line-height": 1,
           }}
         >
-          Tiny-vdom
+          Tiny-signals
         </span>
       ) : null}
     </span>
