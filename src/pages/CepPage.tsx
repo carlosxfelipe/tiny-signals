@@ -174,12 +174,20 @@ export default function CepPage() {
 
 const styles = StyleSheet.create({
   title: { margin: "0 0 12px", color: "var(--primary)" },
-  form: { display: "flex", gap: "8px", "margin-bottom": "12px" },
+  form: {
+    display: "flex",
+    gap: "8px",
+    "margin-bottom": "12px",
+    "flex-wrap": "wrap",
+    "align-items": "stretch",
+  },
   input: {
     padding: "8px 12px",
     "border-radius": "8px",
     border: "1px solid var(--card-border)",
     "font-size": "14px",
+    flex: "1 1 280px",
+    "min-width": "0",
   },
   error: { color: "var(--danger)", margin: "8px 0" },
   result: {
