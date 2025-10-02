@@ -2,7 +2,7 @@ import { h } from "@tiny/index.ts";
 import { ICONS, type IconName } from "@icons/paths.ts";
 
 type Props = {
-  name: IconName;
+  name: IconName | (() => IconName);
   size?: number | string;
   class?: string;
   ariaLabel?: string; // if provided, role="img" will be applied
@@ -18,7 +18,9 @@ export default function Icon({
   title,
   color,
 }: Props) {
-  const d = ICONS[name];
+  const key = () =>
+    typeof name === "function" ? (name as () => IconName)() : name;
+  const d = () => ICONS[key()];
   const px = typeof size === "number" ? String(size) : size;
   const hasLabel = Boolean(ariaLabel);
 
@@ -35,7 +37,7 @@ export default function Icon({
       focusable="false"
     >
       {title ? <title>{title}</title> : null}
-      <path d={d} />
+      <path d={d()} />
     </svg>
   );
 }

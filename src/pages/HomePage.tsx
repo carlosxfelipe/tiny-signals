@@ -2,6 +2,31 @@ import { h, createSignal, Show, For } from "@tiny/index.ts";
 import { StyleSheet } from "@styles/stylesheet.ts";
 import Button from "@components/Button.tsx";
 import Icon from "@icons/Icon.tsx";
+import { navigate } from "@src/router/router.ts";
+import type { Route } from "@src/router/router.ts";
+
+const EMOJIS = [
+  "🌱",
+  "⚡",
+  "🚀",
+  "✨",
+  "🔥",
+  "💡",
+  "🎯",
+  "🧪",
+  "🛠️",
+  "📦",
+  "🧩",
+  "📈",
+];
+
+function pickEmoji(prev?: string) {
+  let e = EMOJIS[Math.floor(Math.random() * EMOJIS.length)];
+  if (EMOJIS.length > 1 && e === prev) {
+    e = EMOJIS[(EMOJIS.indexOf(e) + 1) % EMOJIS.length];
+  }
+  return e;
+}
 
 export default function HomePage() {
   const [show, setShow] = createSignal(false);
@@ -13,9 +38,10 @@ export default function HomePage() {
 
   const addItem = () => {
     const now = new Date();
+    const last = items()[items().length - 1]?.emoji;
     const newItem = {
       id: Date.now(),
-      emoji: "✨",
+      emoji: pickEmoji(last),
       createdAt: now.toISOString(),
     };
     setItems((prev) => [...prev, newItem]);
@@ -67,7 +93,13 @@ export default function HomePage() {
         aprender e me divertir criando — e, quem sabe, inspirar outras pessoas a
         experimentar o mesmo.
       </p>
-
+      <Button
+        variant="solid"
+        tone="primary"
+        onClick={() => navigate("#/login" as Route)}
+      >
+        Ir para a página de login
+      </Button>
       <div style={styles.demoBox}>
         <h2 style={styles.h2}>Exemplos</h2>
 

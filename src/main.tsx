@@ -1,5 +1,6 @@
 import "@styles/global.css";
 import "@styles/navbar.css";
+import "@styles/auth.css";
 
 import { h, mount, createRoot } from "@tiny/index.ts";
 import Layout from "@layout/Layout.tsx";

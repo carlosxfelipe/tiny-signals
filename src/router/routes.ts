@@ -1,3 +1,5 @@
+import LoginPage from "@pages/LoginPage.tsx";
+import RegisterPage from "@pages/RegisterPage.tsx";
 import HomePage from "@pages/HomePage.tsx";
 import CounterPage from "@pages/CounterPage.tsx";
 import CepPage from "@pages/CepPage.tsx";
@@ -5,6 +7,16 @@ import PokePage from "@pages/PokePage.tsx";
 import AboutPage from "@pages/AboutPage.tsx";
 
 export const ROUTE_DEFS = [
+  {
+    path: "#/login" as const,
+    component: LoginPage,
+    layout: { fluid: false, navbar: false },
+  },
+  {
+    path: "#/register" as const,
+    component: RegisterPage,
+    layout: { fluid: false, navbar: false },
+  },
   {
     path: "#/" as const,
     component: HomePage,

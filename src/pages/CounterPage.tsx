@@ -2,8 +2,6 @@ import { h, createMemo, batch } from "@tiny/index.ts";
 import { StyleSheet } from "@styles/stylesheet.ts";
 import Button from "@components/Button.tsx";
 import { counterStore } from "@store/counter.ts";
-// import { navigate } from "@src/router/router.ts";
-// import type { Route } from "@src/router/router.ts";
 
 type Props = { initial?: number; resetTo?: number };
 
@@ -54,14 +52,6 @@ export default function CounterPage({ initial = 0, resetTo = 0 }: Props) {
           reset
         </Button>
       </div>
-      {/* <p>aaa</p>
-      <Button
-        variant="solid"
-        tone="primary"
-        onClick={() => navigate("#/counter" as Route)}
-      >
-        Ir para o Contador
-      </Button> */}
     </div>
   );
 }
