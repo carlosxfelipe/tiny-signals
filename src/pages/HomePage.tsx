@@ -1,6 +1,7 @@
 import { h, createSignal, Show, For } from "@tiny/index.ts";
 import { StyleSheet } from "@styles/stylesheet.ts";
 import Button from "@components/Button.tsx";
+import Icon from "@icons/Icon.tsx";
 
 export default function HomePage() {
   const [show, setShow] = createSignal(false);
@@ -85,8 +86,8 @@ export default function HomePage() {
         <div style={styles.card}>
           <div style={styles.row}>
             <strong>For:</strong>
-            <Button onClick={addItem} size="sm">
-              ➕
+            <Button onClick={addItem} size="sm" title="Adicionar item">
+              <Icon name="plus" size={16} />
             </Button>
           </div>
           <ul style={styles.list}>

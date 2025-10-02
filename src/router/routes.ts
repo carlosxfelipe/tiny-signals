@@ -1,6 +1,7 @@
 import HomePage from "@pages/HomePage.tsx";
 import CounterPage from "@pages/CounterPage.tsx";
 import CepPage from "@pages/CepPage.tsx";
+import PokePage from "@pages/PokePage.tsx";
 import AboutPage from "@pages/AboutPage.tsx";
 
 export const ROUTE_DEFS = [
@@ -18,6 +19,11 @@ export const ROUTE_DEFS = [
     path: "#/cep" as const,
     component: CepPage,
     layout: { fluid: false, navbar: true },
+  },
+  {
+    path: "#/pokedex" as const,
+    component: PokePage,
+    layout: { fluid: true, navbar: true },
   },
   {
     path: "#/about" as const,
