@@ -206,13 +206,26 @@ function setAttr(el: Element, name: string, value: unknown) {
       el instanceof HTMLTextAreaElement ||
       el instanceof HTMLSelectElement
     ) {
-      el.value = value == null ? "" : String(value);
+      if (isSignalGetter(value)) {
+        createEffect(() => {
+          const v = (value as () => unknown)();
+          el.value = v == null ? "" : String(v);
+        });
+      } else {
+        el.value = value == null ? "" : String(value);
+      }
       return;
     }
   }
 
   if (name === "checked" && el instanceof HTMLInputElement) {
-    el.checked = Boolean(value);
+    if (isSignalGetter(value)) {
+      createEffect(() => {
+        el.checked = Boolean((value as () => unknown)());
+      });
+    } else {
+      el.checked = Boolean(value);
+    }
     return;
   }
 
