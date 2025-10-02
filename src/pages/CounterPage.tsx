@@ -1,4 +1,4 @@
-import { h, createMemo, batch } from "@tiny/tiny-signals.ts";
+import { h, createMemo, batch } from "@tiny/index.ts";
 import { StyleSheet } from "@styles/stylesheet.ts";
 import Button from "@components/Button.tsx";
 import { counterStore } from "@store/counter.ts";

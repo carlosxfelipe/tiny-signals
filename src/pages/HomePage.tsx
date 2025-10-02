@@ -1,4 +1,4 @@
-import { h } from "@tiny/tiny-signals.ts";
+import { h } from "@tiny/index.ts";
 import { StyleSheet } from "@styles/stylesheet.ts";
 import Button from "@components/Button.tsx";
 import { navigate } from "@src/router/router.ts";

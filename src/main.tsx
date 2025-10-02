@@ -1,7 +1,7 @@
 import "@styles/global.css";
 import "@styles/navbar.css";
 
-import { h, mount, createRoot } from "@tiny/tiny-signals.ts";
+import { h, mount, createRoot } from "@tiny/index.ts";
 import Layout from "@layout/Layout.tsx";
 import { ROUTES, useRoute, attachRouter } from "@src/router/router.ts";
 

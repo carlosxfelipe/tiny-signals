@@ -1,4 +1,4 @@
-import { createSignal, createEffect } from "@tiny/tiny-signals.ts";
+import { createSignal, createEffect } from "@tiny/index.ts";
 
 type Listener = () => void;
 type SetFn<T> = Partial<T> | ((prev: T) => Partial<T>);
@@ -28,6 +28,7 @@ export function createStore<T extends object>(
           ? opts.migrate(snap.v, snap.s)
           : snap.s;
       }
+      // deno-lint-ignore no-empty
     } catch {}
   };
 
@@ -59,6 +60,7 @@ export function createStore<T extends object>(
           key,
           JSON.stringify({ v: version, s })
         );
+        // deno-lint-ignore no-empty
       } catch {}
       t = null;
     }, 10);
@@ -72,6 +74,7 @@ export function createStore<T extends object>(
         const snap = JSON.parse(ev.newValue) as { v: number; s: T };
         if (!snap?.s) return;
         setStateSignal((prev) => Object.assign({}, prev, snap.s));
+        // deno-lint-ignore no-empty
       } catch {}
     });
   }

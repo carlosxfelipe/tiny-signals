@@ -1,4 +1,4 @@
-import { createSignal } from "@tiny/tiny-signals.ts";
+import { createSignal } from "@tiny/index.ts";
 import { ROUTE_DEFS, ROUTES } from "./routes.ts";
 import type { Route } from "./routes.ts";
 import { save, restore } from "./scroll.ts";

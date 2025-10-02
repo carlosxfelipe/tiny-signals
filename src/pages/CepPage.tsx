@@ -1,4 +1,4 @@
-import { h, createSignal } from "@tiny/tiny-signals.ts";
+import { h, createSignal } from "@tiny/index.ts";
 import { StyleSheet } from "@styles/stylesheet.ts";
 import Button from "@components/Button.tsx";
 import { http } from "@lib/http.ts";
