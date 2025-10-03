@@ -215,10 +215,8 @@ const styles = StyleSheet.create({
   },
   header: { "margin-bottom": "16px" },
   title: {
-    margin: "0",
-    "font-size": "24px",
-    "line-height": 1.2,
-    "letter-spacing": "-0.02em",
+    margin: "0 0 12px",
+    color: "var(--primary)",
   },
   subtitle: { margin: "0", color: "var(--muted)", "font-size": "14px" },
   pager: {

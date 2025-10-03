@@ -6,10 +6,11 @@
   border-bottom: 1px solid var(--card-border);
   z-index: 100;
   padding-top: env(safe-area-inset-top);
+  --nav-h: 64px;
 }
 
 .nav-inner {
-  height: 64px;
+  height: var(--nav-h);
   display: flex;
   align-items: center;
   gap: 16px;
@@ -21,6 +22,10 @@
 }
 
 .nav-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1;
   font-weight: 800;
   letter-spacing: -0.02em;
   color: var(--fg);
@@ -28,8 +33,14 @@
   margin-right: auto;
 }
 
+.nav-brand svg {
+  display: block;
+  flex-shrink: 0;
+}
+
 .nav-links {
   display: flex;
+  align-items: center;
   gap: 12px;
 }
 
@@ -41,14 +52,21 @@
   text-decoration: none;
   font-weight: 600;
   color: var(--muted);
+  line-height: 1;
 }
 
 .nav-link {
-  padding: 6px 12px;
+  height: 40px;
+  padding: 0 14px;
   border-radius: 9999px;
   border: 1px solid transparent;
   transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease,
     transform 0.05s ease;
+}
+
+.nav-link svg {
+  display: block;
+  flex-shrink: 0;
 }
 
 .nav-link:hover {
@@ -76,9 +94,17 @@
   background: transparent;
   border: 1px solid var(--btn-border);
   color: var(--fg);
-  padding: 8px;
+  width: 40px;
+  height: 40px;
   border-radius: 10px;
   cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.nav-toggle svg {
+  display: block;
 }
 
 .nav-menu {
@@ -109,8 +135,10 @@
 }
 
 @media (max-width: 640px) {
+  .navbar {
+    --nav-h: 56px;
+  }
   .nav-inner {
-    height: 56px;
     gap: 12px;
   }
   .nav-links {
@@ -125,7 +153,7 @@
     position: absolute;
     left: 0;
     right: 0;
-    top: 56px;
+    top: var(--nav-h);
     background: var(--card-bg);
     border-bottom: 1px solid var(--card-border);
     box-shadow: var(--shadow);
@@ -133,9 +161,9 @@
     z-index: 90;
   }
   .nav-link {
-    padding: 8px 12px;
+    height: 44px;
+    padding: 0 12px;
     font-size: 14px;
-    line-height: 1;
   }
   .nav-label {
     display: none;
