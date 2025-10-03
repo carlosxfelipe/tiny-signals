@@ -1,4 +1,4 @@
-import { h } from "@tiny/index.ts";
+import { h, createSignal, Show, onCleanup } from "@tiny/index.ts";
 import Icon from "@icons/Icon.tsx";
 import Logo from "./Logo.tsx";
 
@@ -22,12 +22,19 @@ export default function Navbar({ currentPath }: NavbarProps = {}) {
   const isActive = (href: string) =>
     href === "#/" ? path === "#/" : path.startsWith(href);
 
+  const [open, setOpen] = createSignal(false);
+
+  const onHash = () => setOpen(false);
+  globalThis.addEventListener?.("hashchange", onHash);
+  onCleanup(() => globalThis.removeEventListener?.("hashchange", onHash));
+
   return (
     <header class="navbar" role="navigation" aria-label="Principal">
       <div class="nav-inner">
         <a href="#/" class="nav-brand" aria-label="Página inicial Tiny-vdom">
           <Logo height={28} showText />
         </a>
+
         <nav class="nav-links">
           {links.map(({ href, label, icon }) => (
             <a
@@ -41,7 +48,35 @@ export default function Navbar({ currentPath }: NavbarProps = {}) {
             </a>
           ))}
         </nav>
+
+        <button
+          type="button"
+          class="nav-toggle"
+          aria-label="Abrir menu"
+          aria-expanded={() => (open() ? "true" : "false")}
+          aria-controls="nav-menu"
+          onClick={() => setOpen((v) => !v)}
+        >
+          <Icon name="menu" size={20} />
+        </button>
       </div>
+
+      <Show when={open}>
+        <div id="nav-menu" class="nav-menu" role="menu">
+          {links.map(({ href, label, icon }) => (
+            <a
+              href={href}
+              role="menuitem"
+              class={`nav-menu-item${isActive(href) ? " active" : ""}`}
+              aria-current={isActive(href) ? "page" : undefined}
+              onClick={() => setOpen(false)}
+            >
+              <Icon name={icon} size={18} />
+              <span>{label}</span>
+            </a>
+          ))}
+        </div>
+      </Show>
     </header>
   );
 }
