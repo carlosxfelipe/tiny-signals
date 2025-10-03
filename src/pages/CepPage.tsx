@@ -78,7 +78,18 @@ export default function CepPage() {
   return (
     <section>
       <h1 style={styles.title}>Buscar CEP</h1>
-
+      <p style={styles.subtitle}>
+        Dados da{" "}
+        <a
+          class="link"
+          href="https://viacep.com.br/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          ViaCEP
+        </a>
+      </p>
+      <div style={styles.spacer} />
       <div style={styles.form}>
         <input
           id="cep-input"
@@ -174,6 +185,8 @@ export default function CepPage() {
 
 const styles = StyleSheet.create({
   title: { margin: "0 0 12px", color: "var(--primary)" },
+  subtitle: { margin: "0", color: "var(--muted)", "font-size": "14px" },
+  spacer: { height: "16px" },
   form: {
     display: "flex",
     gap: "8px",

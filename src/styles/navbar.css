@@ -134,6 +134,26 @@
   border-color: var(--primary);
 }
 
+@media (max-width: 980px) {
+  .navbar {
+    --nav-h: 60px;
+  }
+  .nav-inner {
+    gap: 12px;
+  }
+  .nav-links {
+    display: flex;
+    gap: 10px;
+  }
+  .nav-link {
+    height: 36px;
+    padding: 0 10px;
+  }
+  .nav-label {
+    display: none;
+  }
+}
+
 @media (max-width: 640px) {
   .navbar {
     --nav-h: 56px;
