@@ -52,12 +52,12 @@ export default function Navbar({ currentPath }: NavbarProps = {}) {
         <button
           type="button"
           class="nav-toggle"
-          aria-label="Abrir menu"
-          aria-expanded={() => (open() ? "true" : "false")}
+          aria-label={() => (open() ? "Fechar menu" : "Abrir menu")}
+          aria-expanded={open}
           aria-controls="nav-menu"
           onClick={() => setOpen((v) => !v)}
         >
-          <Icon name="menu" size={20} />
+          {() => <Icon name={open() ? "close" : "menu"} size={20} />}
         </button>
       </div>
 

@@ -16,7 +16,7 @@ export default function AboutPage() {
       <h2 style={styles.h2}>Contato</h2>
       <ul style={styles.list}>
         <li style={styles.item}>
-          <Icon name="email-variant" size={20} aria-hidden="true" />
+          <Icon name="email" size={20} aria-hidden="true" />
           <span>
             Email:{" "}
             <a href="mailto:carlosxfelipe@gmail.com" class="link">
@@ -56,13 +56,23 @@ export default function AboutPage() {
         </li>
 
         <li style={styles.item}>
-          <Icon name="map-marker-outline" size={20} aria-hidden="true" />
+          <Icon name="whatsapp" size={20} aria-hidden="true" />
           <span>
-            Fortaleza, Ceará, Brasil •{" "}
-            <a href="tel:+5585999502195" class="link">
+            WhatsApp:{" "}
+            <a
+              href="https://wa.me/5585999502195"
+              target="_blank"
+              rel="noreferrer"
+              class="link"
+            >
               (85) 99950-2195
             </a>
           </span>
+        </li>
+
+        <li style={styles.item}>
+          <Icon name="map-marker-outline" size={20} aria-hidden="true" />
+          <span>Fortaleza, Ceará, Brasil</span>
         </li>
       </ul>
     </section>
