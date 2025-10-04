@@ -1,133 +1,104 @@
 :root {
   --bg: #ffffff;
   --fg: #1c1b1f;
-
   --background: #fffbfe;
   --on-background: #1c1b1f;
-
   --surface: #fffbfe;
   --on-surface: #1c1b1f;
   --surface-variant: #e7e0ec;
   --on-surface-variant: #49454f;
-
   --surface-container-lowest: #ffffff;
   --surface-container-low: #f7f2fa;
   --surface-container: #f3edf7;
   --surface-container-high: #ece6f0;
   --surface-container-highest: #e6e0e9;
-
   --inverse-surface: #313033;
   --inverse-on-surface: #f4eff4;
   --inverse-primary: #d0bcff;
-
   --primary: #6750a4;
   --on-primary: #ffffff;
   --primary-container: #eaddff;
   --on-primary-container: #21005d;
   --primary-hover: #7a61b0;
-
   --secondary: #625b71;
   --on-secondary: #ffffff;
   --secondary-container: #e8def8;
   --on-secondary-container: #1d192b;
-
   --tertiary: #7d5260;
   --on-tertiary: #ffffff;
   --tertiary-container: #ffd8e4;
   --on-tertiary-container: #31111d;
-
   --error: #b3261e;
   --on-error: #ffffff;
   --error-container: #f9dedc;
   --on-error-container: #410e0b;
-
   --outline: #79747e;
   --outline-variant: #cac4d0;
-
   --surface-tint: #6750a4;
   --scrim: #000000;
-
   --card-bg: #ffffff;
   --card-border: #e7e0ec;
   --muted: #49454f;
-
   --btn-bg: #ffffff;
   --btn-border: #e7e0ec;
   --btn-hover: #f6f0fa;
   --btn-active: #ece6f3;
-
   --danger: #b3261e;
   --danger-hover: #8c1d18;
-
   --ring: 0 0 0 4px rgba(103, 80, 164, 0.15);
   --shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
-
-  --state-hover: 15%;
-  --state-pressed: 22%;
+  --state-hover: 30%;
+  --state-pressed: 45%;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #1c1b1f;
     --fg: #e6e1e5;
-
     --background: #1c1b1f;
     --on-background: #e6e1e5;
-
     --surface: #1c1b1f;
     --on-surface: #e6e1e5;
     --surface-variant: #49454f;
     --on-surface-variant: #cac4d0;
-
     --surface-container-lowest: #0f0d13;
     --surface-container-low: #1d1b20;
     --surface-container: #211f26;
     --surface-container-high: #2b2930;
     --surface-container-highest: #36343b;
-
     --inverse-surface: #e6e1e5;
     --inverse-on-surface: #313033;
     --inverse-primary: #6750a4;
-
     --primary: #d0bcff;
     --on-primary: #381e72;
     --primary-container: #4f378b;
     --on-primary-container: #eaddff;
     --primary-hover: #e1d6ff;
-
     --secondary: #ccc2dc;
     --on-secondary: #332d41;
     --secondary-container: #4a4458;
     --on-secondary-container: #e8def8;
-
     --tertiary: #efb8c8;
     --on-tertiary: #492532;
     --tertiary-container: #633b48;
     --on-tertiary-container: #ffd8e4;
-
     --error: #f2b8b5;
     --on-error: #601410;
     --error-container: #8c1d18;
     --on-error-container: #f9dedc;
-
     --outline: #938f99;
     --outline-variant: #49454f;
-
     --surface-tint: #d0bcff;
     --scrim: #000000;
-
     --card-bg: #1c1b1f;
     --card-border: #49454f;
     --muted: #cac4d0;
-
     --btn-bg: #1c1b1f;
     --btn-border: #49454f;
     --btn-hover: #2b2930;
     --btn-active: #35343a;
-
     --danger: #f2b8b5;
     --danger-hover: #cf9c99;
-
     --ring: 0 0 0 4px rgba(208, 188, 255, 0.25);
     --shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
   }
@@ -638,6 +609,9 @@ html[data-theme="light"] {
     var(--primary) calc(100% - var(--state-pressed)),
     white var(--state-pressed)
   );
+  --visited: var(--link-hover);
+  --visited-hover: var(--link-hover);
+  --visited-pressed: var(--link-pressed);
 }
 
 html[data-theme="dark"] {
@@ -652,6 +626,9 @@ html[data-theme="dark"] {
     var(--primary) calc(100% - var(--state-pressed)),
     black var(--state-pressed)
   );
+  --visited: var(--link-hover);
+  --visited-hover: var(--link-hover);
+  --visited-pressed: var(--link-pressed);
 }
 
 main a,
@@ -677,14 +654,17 @@ a:active {
 main a:visited,
 .prose a:visited,
 a:visited {
-  color: var(--link) !important;
+  color: var(--visited) !important;
 }
 
-a:focus {
-  outline: none !important;
-  box-shadow: none !important;
+main a:visited:hover,
+.prose a:visited:hover,
+a:visited:hover {
+  color: var(--visited-hover) !important;
 }
-a:focus-visible {
-  border-radius: 2px;
-  box-shadow: var(--ring);
+
+main a:visited:active,
+.prose a:visited:active,
+a:visited:active {
+  color: var(--visited-pressed) !important;
 }
