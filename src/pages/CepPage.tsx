@@ -184,7 +184,7 @@ export default function CepPage() {
 }
 
 const styles = StyleSheet.create({
-  title: { margin: "0 0 12px", color: "var(--primary)" },
+  title: { margin: "0 0 12px" },
   subtitle: { margin: "0", color: "var(--muted)", "font-size": "14px" },
   spacer: { height: "16px" },
   form: {

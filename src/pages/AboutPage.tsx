@@ -85,7 +85,6 @@ const styles = StyleSheet.create({
   },
   title: {
     margin: "0 0 4px",
-    color: "var(--primary)",
   },
   subtitle: {
     margin: "0",

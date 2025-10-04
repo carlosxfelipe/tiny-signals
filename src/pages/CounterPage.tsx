@@ -57,7 +57,7 @@ export default function CounterPage({ initial = 0, resetTo = 0 }: Props) {
 }
 
 const styles = StyleSheet.create({
-  title: { margin: "0 0 12px", color: "var(--primary)" },
+  title: { margin: "0 0 12px" },
   infoBox: { display: "grid", "row-gap": "4px", "margin-bottom": "16px" },
   bold: { "font-weight": 600 },
   muted: { color: "var(--muted)" },

@@ -151,7 +151,6 @@ export default function HomePage() {
 const styles = StyleSheet.create({
   title: {
     margin: "0 0 12px",
-    color: "var(--primary)",
   },
   p: {
     margin: "0 0 16px",

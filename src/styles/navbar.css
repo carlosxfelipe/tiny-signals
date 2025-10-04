@@ -7,6 +7,9 @@
   z-index: 100;
   padding-top: env(safe-area-inset-top);
   --nav-h: 64px;
+  --btn-bg: var(--card-bg);
+  --btn-border: var(--card-border);
+  --btn-hover: color-mix(in srgb, var(--card-bg) 94%, var(--fg) 6%);
 }
 
 .nav-inner {
@@ -81,7 +84,7 @@
 
 .nav-link:is(.active, [aria-current="page"]) {
   background: var(--primary);
-  color: #fff;
+  color: var(--on-primary);
   border-color: var(--primary);
 }
 
@@ -130,8 +133,16 @@
 
 .nav-menu-item:is(.active, [aria-current="page"]) {
   background: var(--primary);
-  color: #fff;
+  color: var(--on-primary);
   border-color: var(--primary);
+}
+
+.nav-link:focus-visible,
+.nav-toggle:focus-visible {
+  outline: none;
+  box-shadow: var(--ring);
+  border-color: var(--primary);
+  border-radius: 10px;
 }
 
 @media (max-width: 980px) {
@@ -198,10 +209,16 @@
   }
   .nav-link:is(.active, [aria-current="page"]):hover {
     background: var(--primary);
-    color: #fff;
+    color: var(--on-primary);
     border-color: var(--primary);
   }
   .nav-menu-item:hover {
     background: var(--btn-bg);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .navbar {
+    --btn-hover: color-mix(in srgb, var(--card-bg) 88%, var(--fg) 12%);
   }
 }
