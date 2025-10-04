@@ -61,6 +61,9 @@
 
   --ring: 0 0 0 4px rgba(103, 80, 164, 0.15);
   --shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+
+  --state-hover: 15%;
+  --state-pressed: 22%;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -623,12 +626,65 @@ li {
   margin: 0.25rem 0;
 }
 
-a {
-  color: var(--primary);
-  text-decoration: none;
+html[data-theme="light"] {
+  --link: var(--primary);
+  --link-hover: color-mix(
+    in srgb,
+    var(--primary) calc(100% - var(--state-hover)),
+    white var(--state-hover)
+  );
+  --link-pressed: color-mix(
+    in srgb,
+    var(--primary) calc(100% - var(--state-pressed)),
+    white var(--state-pressed)
+  );
 }
 
+html[data-theme="dark"] {
+  --link: var(--primary);
+  --link-hover: color-mix(
+    in srgb,
+    var(--primary) calc(100% - var(--state-hover)),
+    black var(--state-hover)
+  );
+  --link-pressed: color-mix(
+    in srgb,
+    var(--primary) calc(100% - var(--state-pressed)),
+    black var(--state-pressed)
+  );
+}
+
+main a,
+.prose a,
+a {
+  color: var(--link) !important;
+  text-decoration: none !important;
+  transition: color 0.15s ease;
+}
+
+main a:hover,
+.prose a:hover,
 a:hover {
-  color: var(--primary-hover);
-  text-decoration: underline;
+  color: var(--link-hover) !important;
+}
+
+main a:active,
+.prose a:active,
+a:active {
+  color: var(--link-pressed) !important;
+}
+
+main a:visited,
+.prose a:visited,
+a:visited {
+  color: var(--link) !important;
+}
+
+a:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+a:focus-visible {
+  border-radius: 2px;
+  box-shadow: var(--ring);
 }
