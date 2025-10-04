@@ -3,6 +3,7 @@ import { StyleSheet } from "@styles/stylesheet.ts";
 import { http } from "@lib/http.ts";
 import { getSearch, navigate } from "@src/router/router.ts";
 import Button from "@components/Button.tsx";
+import Icon from "@icons/Icon.tsx";
 
 type ApiResult = {
   results: Array<{ name: string; url: string }>;
@@ -128,7 +129,7 @@ export default function PokePage() {
 
       <div style={styles.pager}>
         <Button onClick={goPrev} disabled={() => !canPrev()}>
-          ◀ Anterior
+          <Icon name="chevron-left" size={24} ariaLabel="Página anterior" />
         </Button>
 
         <span style={styles["pager-label"]}>
@@ -136,7 +137,7 @@ export default function PokePage() {
         </span>
 
         <Button onClick={goNext} disabled={() => !canNext()}>
-          Próxima ▶
+          <Icon name="chevron-right" size={24} ariaLabel="Próxima página" />
         </Button>
       </div>
 

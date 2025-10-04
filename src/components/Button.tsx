@@ -1,4 +1,4 @@
-import { h } from "@tiny/index.ts";
+import { h, createSignal } from "@tiny/index.ts";
 import { StyleSheet } from "@styles/stylesheet.ts";
 
 export type ButtonVariant = "solid" | "soft";
@@ -32,6 +32,7 @@ export default function Button({
   style,
   title,
 }: ButtonProps) {
+  const [hover, setHover] = createSignal(false);
   const isDisabled = () => asBool(disabled) || asBool(loading);
 
   return (
@@ -42,6 +43,8 @@ export default function Button({
         if (isDisabled()) return;
         onClick?.(ev);
       }}
+      onMouseEnter={() => !isDisabled() && setHover(true)}
+      onMouseLeave={() => setHover(false)}
       disabled={isDisabled}
       style={StyleSheet.merge(
         styles.base,
@@ -50,6 +53,14 @@ export default function Button({
         toneStyles[tone],
         variantStyles[variant],
         {
+          background: () =>
+            variant === "solid"
+              ? hover()
+                ? "var(--_bgHover)"
+                : "var(--_bg)"
+              : hover()
+              ? "var(--btn-hover)"
+              : "var(--_softBg)",
           cursor: () => (isDisabled() ? "not-allowed" : "pointer"),
           opacity: () => (isDisabled() ? 0.6 : 1),
         },
@@ -77,7 +88,7 @@ const toneStyles: Record<ButtonTone, JSX.StyleObject> = StyleSheet.create({
   primary: {
     "--_bg": "var(--primary)",
     "--_bgHover": "var(--primary-hover)",
-    "--_fg": "#ffffff",
+    "--_fg": "var(--on-primary)",
     "--_softBg": "var(--btn-bg)",
     "--_border": "var(--btn-border)",
   },
@@ -91,7 +102,7 @@ const toneStyles: Record<ButtonTone, JSX.StyleObject> = StyleSheet.create({
   danger: {
     "--_bg": "var(--danger)",
     "--_bgHover": "var(--danger-hover)",
-    "--_fg": "#ffffff",
+    "--_fg": "var(--on-error)",
     "--_softBg": "var(--btn-bg)",
     "--_border": "var(--btn-border)",
   },
