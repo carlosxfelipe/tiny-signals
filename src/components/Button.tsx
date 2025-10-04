@@ -33,6 +33,8 @@ export default function Button({
   title,
 }: ButtonProps) {
   const [hover, setHover] = createSignal(false);
+  const [focused, setFocused] = createSignal(false);
+  const [active, setActive] = createSignal(false);
   const isDisabled = () => asBool(disabled) || asBool(loading);
 
   return (
@@ -44,7 +46,14 @@ export default function Button({
         onClick?.(ev);
       }}
       onMouseEnter={() => !isDisabled() && setHover(true)}
-      onMouseLeave={() => setHover(false)}
+      onMouseLeave={() => {
+        setHover(false);
+        setActive(false);
+      }}
+      onMouseDown={() => !isDisabled() && setActive(true)}
+      onMouseUp={() => setActive(false)}
+      onFocus={() => setFocused(true)}
+      onBlur={() => setFocused(false)}
       disabled={isDisabled}
       style={StyleSheet.merge(
         styles.base,
@@ -55,12 +64,16 @@ export default function Button({
         {
           background: () =>
             variant === "solid"
-              ? hover()
+              ? active() || hover()
                 ? "var(--_bgHover)"
                 : "var(--_bg)"
+              : active()
+              ? "var(--btn-active)"
               : hover()
               ? "var(--btn-hover)"
               : "var(--_softBg)",
+          transform: () => (active() ? "translateY(1px)" : "none"),
+          "box-shadow": () => (focused() ? "var(--ring)" : "var(--shadow)"),
           cursor: () => (isDisabled() ? "not-allowed" : "pointer"),
           opacity: () => (isDisabled() ? 0.6 : 1),
         },
@@ -79,9 +92,9 @@ function asBool(v: boolean | (() => boolean)) {
 }
 
 const sizeStyles: Record<ButtonSize, JSX.StyleObject> = {
-  sm: { padding: "6px 16px", "font-size": "12.5px", "border-radius": "9999px" },
-  md: { padding: "8px 18px", "font-size": "14px", "border-radius": "9999px" },
-  lg: { padding: "10px 22px", "font-size": "15px", "border-radius": "9999px" },
+  sm: { padding: "8px 12px", "font-size": "12.5px" },
+  md: { padding: "10px 14px", "font-size": "14px" },
+  lg: { padding: "12px 18px", "font-size": "15px" },
 };
 
 const toneStyles: Record<ButtonTone, JSX.StyleObject> = StyleSheet.create({
@@ -113,12 +126,15 @@ const variantStyles: Record<ButtonVariant, JSX.StyleObject> = {
     background: "var(--_bg)",
     color: "var(--_fg)",
     border: "1px solid transparent",
-    transition: "background 120ms ease-out, box-shadow 120ms ease",
+    transition:
+      "transform 0.06s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease",
   },
   soft: {
     background: "var(--_softBg)",
     color: "var(--fg)",
     border: "1px solid var(--_border)",
+    transition:
+      "transform 0.06s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease",
   },
 };
 
@@ -132,8 +148,7 @@ const styles = StyleSheet.create({
     "-webkit-tap-highlight-color": "transparent",
     outline: "none",
     "box-shadow": "var(--shadow)",
-    transition:
-      "opacity 120ms ease, background 120ms ease, box-shadow 120ms ease",
+    "border-radius": "12px",
   },
   block: { display: "flex", width: "100%" },
   label: { "font-weight": 600 },
